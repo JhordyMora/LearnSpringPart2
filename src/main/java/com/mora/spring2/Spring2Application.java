@@ -10,7 +10,8 @@ import org.springframework.context.annotation.ComponentScans;
 // @ComponentScan({"com.mora.spring2","com.mora.controllers"}) // otra manera
 @ComponentScans({
 		@ComponentScan("com.mora.spring2"),
-		@ComponentScan("com.mora.controllers")
+		@ComponentScan("com.mora.controllers"),
+		@ComponentScan("com.mora.models"),
 })
 public class Spring2Application {
 
