@@ -11,7 +11,7 @@ import com.mora.models.services.IService;
 @Controller
 public class IndexController {
 
-    @Autowired
+    // @Autowired
     // private MiServicio miServicio; // = new MiServicio();
     private IService miServicio;
 
@@ -19,5 +19,12 @@ public class IndexController {
     public String index(Model model) {
         model.addAttribute("objeto", miServicio.operacion());
         return "index";
+    }
+
+    // Aqui spring boot ineyecta el servicio por detras, y el setter lo pasa al
+    // atributo de la clase
+    @Autowired
+    public void setMiServicio(IService miServicio) {
+        this.miServicio = miServicio;
     }
 }
