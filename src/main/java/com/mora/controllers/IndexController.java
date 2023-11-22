@@ -5,13 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.mora.models.services.MiServicio;
+import com.mora.models.services.IService;
+// import com.mora.models.services.MiServicio;
 
 @Controller
 public class IndexController {
 
     @Autowired
-    private MiServicio miServicio; // = new MiServicio();
+    // private MiServicio miServicio; // = new MiServicio();
+    private IService miServicio;
 
     @GetMapping({ "/", "", "/index" })
     public String index(Model model) {
