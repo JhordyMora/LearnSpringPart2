@@ -11,8 +11,13 @@ import com.mora.models.services.IService;
 @Controller
 public class IndexController {
 
-    // @Autowired
+    @Autowired
     // private MiServicio miServicio; // = new MiServicio();
+    // al implementar un servicio, se puede dar nombres a los componentes para
+    // ayudarle a spring a saber cual debe de usar, ademas se pueden usar 2
+    // anotaciones
+    // 1. @Primary
+    // 2. @Qualifier
     private IService miServicio;
 
     @GetMapping({ "/", "", "/index" })
@@ -21,10 +26,10 @@ public class IndexController {
         return "index";
     }
 
-    // Aqui spring boot ineyecta el servicio por detras, y el setter lo pasa al
+    // Aqui spring boot inyecta el servicio por detras, y el setter lo pasa al
     // atributo de la clase
-    @Autowired
-    public void setMiServicio(IService miServicio) {
-        this.miServicio = miServicio;
-    }
+    // @Autowired
+    // public void setMiServicio(IService miServicio) {
+    // this.miServicio = miServicio;
+    // }
 }
