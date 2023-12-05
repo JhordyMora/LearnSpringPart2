@@ -19,10 +19,11 @@ public class IndexController {
     // anotaciones
     // 1. @Primary
     // 2. @Qualifier
-    @Qualifier("miServicioSimple") // Con esta anotacion aunque haya un bean que implemente el servicio con
-                                   // primary, esta anotacion la va a ignorar y buscar el bean con el nombre que
-                                   // tenga la clase del componente escrito en el qualifier. Tambien se prodria
-                                   // usar solo qualifier estar poniendo el servicio necesario segun sea el caso
+    @Qualifier("miServicioMedio") // Con esta anotacion aunque haya un bean que
+    // implemente el servicio con
+    // primary, esta anotacion la va a ignorar y buscar el bean con el nombre que
+    // tenga la clase del componente escrito en el qualifier. Tambien se prodria
+    // usar solo qualifier estar poniendo el servicio necesario segun sea el caso
     private IService miServicio;
 
     @GetMapping({ "/", "", "/index" })
