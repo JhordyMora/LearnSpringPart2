@@ -20,7 +20,7 @@ public class FormController {
     public String procesar(Model model,
             @RequestParam(value = "username", required = true) String username,
             @RequestParam(value = "password", required = true) String password,
-            @RequestParam(value = "E-Mail") String email) {
+            @RequestParam(value = "email") String email) {
 
         Usuario usuario = new Usuario();
         usuario.setUsername(username);
