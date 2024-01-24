@@ -1,13 +1,16 @@
 package com.mora.controllers;
 
+import com.mora.models.domain.Usuario;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mora.models.domain.Usuario;
-import org.springframework.web.bind.annotation.RequestBody;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 @Controller
 public class FormController {
@@ -43,10 +46,25 @@ public class FormController {
     // clase que pongamos. En esta caso la clase es Usuario y los atributos de
     // usuario (username, password, email) son iguales a los id de el formulario,
     // por eso el request para se hace automatico
+
+
+    // @Valid hace una validacion del objeto usario con las anotaciones que se pusieron dentro de la clase Usuario
+    // (ej. @NotNull)
+    // BindingResult se usa para confirmar si la validacion es correcta o no, siempre va despues de @Valid (o del
+    // objeto que queramos validar)
     @PostMapping("/form")
-    public String procesar(Usuario usuario, Model model) {
+    public String procesar(@Valid Usuario usuario, BindingResult result, Model model) {
 
         model.addAttribute("titulo", "Resultado Form");
+        if (result.hasErrors()) {
+            Map<String, String> errores = new HashMap<>();
+            result.getFieldErrors()
+                    .forEach(err -> errores.put(err.getField(),
+                                                "El Campo".concat(err.getField().concat(" ").concat(
+                                                        Objects.requireNonNull(err.getDefaultMessage())))));
+            model.addAttribute("error", errores);
+            return "form";
+        }
         model.addAttribute("usuario", usuario);
         return "resultado";
     }
