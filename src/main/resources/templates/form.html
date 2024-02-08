@@ -26,10 +26,12 @@
                     />
                 </div>
             </div>
-            <div
+            <!--<div
                 th:if="${error != null && error.containsKey('username')}"
                 th:text="${error.get('username')}"
-            ></div>
+            ></div>-->
+            <!--se puede manejar los errores de la manera de abajo-->
+            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
             <div>
                 <label for="password">Password</label>
                 <div>
@@ -40,10 +42,12 @@
                     />
                 </div>
             </div>
-            <div
+            <!--<div
                 th:if="${error != null && error.containsKey('password')}"
                 th:text="${error.get('password')}"
-            ></div>
+            ></div>-->
+            <!--se puede manejar los errores de la manera de abajo-->
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
             <div>
                 <label for="email">Correo</label>
                 <div>
@@ -54,10 +58,12 @@
                     />
                 </div>
             </div>
-            <div
+            <!--<div
                 th:if="${error != null && error.containsKey('email')}"
                 th:text="${error.get('email')}"
-            ></div>
+            ></div>-->
+            <!--se puede manejar los errores de la manera de abajo-->
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
             <div>
                 <div>
                     <input type="submit" value="Enviar" />
@@ -65,5 +71,4 @@
             </div>
         </form>
     </body>
-
 </html>

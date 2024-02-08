@@ -59,12 +59,13 @@ public class FormController {
 
         model.addAttribute("titulo", "Resultado Form");
         if (result.hasErrors()) {
-            Map<String, String> errores = new HashMap<>();
-            result.getFieldErrors()
-                    .forEach(err -> errores.put(err.getField(),
-                                                "El Campo ".concat(err.getField().concat(" ").concat(
-                                                        Objects.requireNonNull(err.getDefaultMessage())))));
-            model.addAttribute("error", errores);
+            // Este manejo de errores no es necesario hacer pq sprin lo puede hacer de forma automatica. Mirar el html
+            // Map<String, String> errores = new HashMap<>();
+            // result.getFieldErrors()
+            //         .forEach(err -> errores.put(err.getField(),
+            //                                     "El Campo ".concat(err.getField().concat(" ").concat(
+            //                                             Objects.requireNonNull(err.getDefaultMessage())))));
+            // model.addAttribute("error", errores);
             return "form";
         }
         model.addAttribute("usuario", usuario);
