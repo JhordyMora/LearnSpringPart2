@@ -7,16 +7,22 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 @Controller
+@SessionAttributes("usuario")// este nombre tiene que ser el nombre del objeto que la pasamos a la vista al cargarla
 public class FormController {
     @GetMapping("/form")
     public String form(Model model) {
         Usuario usuario = new Usuario();
+        usuario.setNombre("John");
+        usuario.setApellido("Doe");
+        usuario.setIdentificador("123.456.789-k");
         model.addAttribute("titulo", "Formulario Usuarios");
         model.addAttribute("usuario", usuario);
         return "form";
@@ -53,13 +59,14 @@ public class FormController {
     // @Valid hace una validacion del objeto usario con las anotaciones que se pusieron dentro de la clase Usuario
     // (ej. @NotNull)
     // BindingResult se usa para confirmar si la validacion es correcta o no, siempre va despues de @Valid (o del
-    // objeto que queramos validar)
+    // objeto que queramos validar).apellido
+        
     @PostMapping("/form")
-    public String procesar(@Valid Usuario usuario, BindingResult result, Model model) {
+    public String procesar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
 
         model.addAttribute("titulo", "Resultado Form");
         if (result.hasErrors()) {
-            // Este manejo de errores no es necesario hacer pq sprin lo puede hacer de forma automatica. Mirar el html
+            // Este manejo de errores no es necesario hacer pq spring lo puede hacer de forma automatica. Mirar el html
             // Map<String, String> errores = new HashMap<>();
             // result.getFieldErrors()
             //         .forEach(err -> errores.put(err.getField(),
@@ -69,6 +76,7 @@ public class FormController {
             return "form";
         }
         model.addAttribute("usuario", usuario);
+        status.setComplete();
         return "resultado";
     }
 
