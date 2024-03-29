@@ -1,18 +1,22 @@
 package com.mora.models.domain;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class Usuario {
     private String identificador;
-    @NotEmpty
+    @NotEmpty(message = "El atributo no puede estar vacio")
     private String nombre;
-    @NotEmpty
+    @NotEmpty(message = "El atributo no puede estar vacio")
     private String apellido;
-    @NotEmpty
+    @NotEmpty(message = "El atributo no puede estar vacio")
+    @Size(min = 3, max = 8, message = "La longitud del username debe de ser de minimo 3 hasta un maximo de 8 caracteres")// size se usa para validar longitudes de string, si se quiere validar numeros se usa @min y @max
     private String username;
-    @NotEmpty
+    @NotEmpty(message = "El atributo no puede estar vacio")
     private String password;
-    @NotEmpty
+    @NotEmpty(message = "El atributo no puede estar vacio")
+    @Email(message = "Correo con formato incorrecto")
     private String email;
     
     public String getNombre() {
