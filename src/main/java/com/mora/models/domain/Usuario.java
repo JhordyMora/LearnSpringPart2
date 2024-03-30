@@ -6,17 +6,23 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class Usuario {
+
     @Pattern(regexp = "^\\d{1,3}\\.\\d{3}\\.\\d{3}-[A-Z]$", message = "El patron del identificador es incorrecto")
     private String identificador;
+
     @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
     private String nombre;
+
     @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
     private String apellido;
+
     @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
     @Size(min = 3, max = 8, message = "La longitud del username debe de ser de minimo 3 hasta un maximo de 8 caracteres")// size se usa para validar longitudes de string, si se quiere validar numeros se usa @min y @max
     private String username;
+
     @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
     private String password;
+
     @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
     @Email(message = "Correo con formato incorrecto")
     private String email;
