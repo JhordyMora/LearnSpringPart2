@@ -2,9 +2,11 @@ package com.mora.models.domain;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class Usuario {
+    @Pattern(regexp = "^\\d{1,3}\\.\\d{3}\\.\\d{3}-[A-Z]$", message = "El patron del identificador es incorrecto")
     private String identificador;
     @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
     private String nombre;
