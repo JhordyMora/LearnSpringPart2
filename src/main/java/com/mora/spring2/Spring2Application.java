@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ComponentScans;
 		@ComponentScan("com.mora.spring2"),
 		@ComponentScan("com.mora.controllers"),
 		@ComponentScan("com.mora.models"),
+		@ComponentScan("com.mora.validation"),
 })
 public class Spring2Application {
 

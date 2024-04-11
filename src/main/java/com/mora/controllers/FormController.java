@@ -1,7 +1,11 @@
 package com.mora.controllers;
 
 import com.mora.models.domain.Usuario;
+import com.mora.validation.UsuarioValidador;
+
 import jakarta.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +21,10 @@ import java.util.Objects;
 @Controller
 @SessionAttributes("usuario")// este nombre tiene que ser el nombre del objeto que la pasamos a la vista al cargarla
 public class FormController {
+
+    @Autowired
+    private UsuarioValidador usuarioValidador;
+
     @GetMapping("/form")
     public String form(Model model) {
         Usuario usuario = new Usuario();
@@ -64,6 +72,7 @@ public class FormController {
     @PostMapping("/form")
     public String procesar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
 
+        usuarioValidador.validate(usuario, result);
         model.addAttribute("titulo", "Resultado Form");
         if (result.hasErrors()) {
             // Este manejo de errores no es necesario hacer pq spring lo puede hacer de forma automatica. Mirar el html
