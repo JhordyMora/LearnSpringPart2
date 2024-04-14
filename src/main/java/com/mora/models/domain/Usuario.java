@@ -1,6 +1,7 @@
 package com.mora.models.domain;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -24,8 +25,8 @@ public class Usuario {
 
     @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
     private String password;
-
-    @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
+    // NotBlank se usa para valida que no este vacio ni haya espacios en blancos Pd: nunca poner notblank y notempty juntos
+    @NotBlank(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
     @Email(message = "Correo con formato incorrecto")
     private String email;
     

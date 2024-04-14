@@ -21,7 +21,7 @@ public class UsuarioValidador implements Validator{
         // NotEmpty.usuario.nombre viene de los messages.properties. Este se conecta directamente con el mensaje que hay alli
         // importante es no ponerle el mensaje directamente aqui. PD: NotEmpty.usuario.nombre es el estandar pero si lo 
         // personalisamos de esta manera se pudo poner otro que nosotros quisieramos
-        ValidationUtils.rejectIfEmpty(errors, "nombre", "NotEmpty.usuario.nombre");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "NotEmpty.usuario.nombre");
         
         // Esto no es necesario de hacerlo, es solamente otra manera pero es la misma de arriba. Pero la de arriba es mas corta
         // if(usuario.getNombre().isEmpty()){

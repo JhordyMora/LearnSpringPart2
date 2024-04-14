@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -24,6 +26,12 @@ public class FormController {
 
     @Autowired
     private UsuarioValidador usuarioValidador;
+
+    // esta anotacion y metodo hacen la validacion necesaria en vez de crear un objeto en cada metodo donde haya un http method
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.addValidators(usuarioValidador);// si utilizamos setValidator borrariamos (sobreescribiriamos) las funciones de @Valid por eso si las queremos dejar activas usamos addValidators, sino setValidator con el validados personalizado que hayamos hecho 
+    }
 
     @GetMapping("/form")
     public String form(Model model) {
@@ -71,8 +79,8 @@ public class FormController {
         
     @PostMapping("/form")
     public String procesar(@Valid Usuario usuario, BindingResult result, Model model, SessionStatus status) {
-
-        usuarioValidador.validate(usuario, result);
+        // se puede comentar esta si se usa la anotacion @InitBinder que es otra manera de hacerlo
+        // usuarioValidador.validate(usuario, result);
         model.addAttribute("titulo", "Resultado Form");
         if (result.hasErrors()) {
             // Este manejo de errores no es necesario hacer pq spring lo puede hacer de forma automatica. Mirar el html
