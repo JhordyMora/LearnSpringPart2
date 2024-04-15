@@ -17,7 +17,8 @@ public class UsuarioValidador implements Validator{
 
     @Override
     public void validate(Object target, Errors errors) {
-        Usuario usuario = (Usuario) target;
+        // Se comentó la linea de abajo pq se creó una anotación que las validara
+        // Usuario usuario = (Usuario) target;
         // NotEmpty.usuario.nombre viene de los messages.properties. Este se conecta directamente con el mensaje que hay alli
         // importante es no ponerle el mensaje directamente aqui. PD: NotEmpty.usuario.nombre es el estandar pero si lo 
         // personalisamos de esta manera se pudo poner otro que nosotros quisieramos
@@ -28,9 +29,10 @@ public class UsuarioValidador implements Validator{
         //     errors.rejectValue("nombre", "NotEmpty.usuario.nombre");
         // }
 
-        if(!(usuario.getIdentificador().matches( "^\\d{1,3}\\.\\d{3}\\.\\d{3}-[A-Z]$"))){
-            errors.rejectValue("identificador", "Pattern.usuario.identificador");
-        }
+        // Se comentó las 3 lineas de abajo pq se creó una anotación que las validara
+        // if(!(usuario.getIdentificador().matches( "^\\d{1,3}\\.\\d{3}\\.\\d{3}-[A-Z]$"))){
+        //     errors.rejectValue("identificador", "Pattern.usuario.identificador");
+        // }
     }
     
 }
