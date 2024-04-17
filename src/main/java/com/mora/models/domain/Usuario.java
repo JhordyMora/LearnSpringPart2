@@ -10,26 +10,21 @@ import jakarta.validation.constraints.Size;
 
 public class Usuario {
 
-    // @Pattern(regexp = "^\\d{1,3}\\.\\d{3}\\.\\d{3}-[A-Z]$", message = "El patron del identificador es incorrecto")
-    // se comento para hacerlo con la clase validation
     @IdentificadorRegex
     private String identificador;
 
-    // @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
-    // se comento para hacerlo con la clase validation
     private String nombre;
 
-    @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
+    @NotEmpty(message = "El atributo no puede estar vacio")
     private String apellido;
 
-    @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
-    @Size(min = 3, max = 8, message = "La longitud del username debe de ser de minimo 3 hasta un maximo de 8 caracteres")// size se usa para validar longitudes de string, si se quiere validar numeros se usa @min y @max
+    @NotEmpty(message = "El atributo no puede estar vacio")
+    @Size(min = 3, max = 8, message = "La longitud del username debe de ser de minimo 3 hasta un maximo de 8 caracteres")
     private String username;
 
-    @NotEmpty(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
+    @NotEmpty(message = "El atributo no puede estar vacio")
     private String password;
-    // NotBlank se usa para valida que no este vacio ni haya espacios en blancos Pd: nunca poner notblank y notempty juntos
-    @NotBlank(message = "El atributo no puede estar vacio")// este campo no va a salir de esta manera pq hay un messages.properties con reescribiendo esta anotacion y las demas 
+    @NotBlank(message = "El atributo no puede estar vacio")
     @Email(message = "Correo con formato incorrecto")
     private String email;
     
