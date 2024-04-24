@@ -1,6 +1,7 @@
 package com.mora.models.domain;
 
 import com.mora.validation.IdentificadorRegex;
+import com.mora.validation.Requerido;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -14,7 +15,8 @@ public class Usuario {
 
     private String nombre;
 
-    @NotEmpty(message = "El atributo no puede estar vacío")
+    // @NotEmpty(message = "El atributo no puede estar vacío")
+    @Requerido
     private String apellido;
 
     @NotEmpty(message = "El atributo no puede estar vacío")
