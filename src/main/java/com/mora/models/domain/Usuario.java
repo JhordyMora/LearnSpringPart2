@@ -5,7 +5,6 @@ import com.mora.validation.IdentificadorRegex;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class Usuario {
@@ -15,16 +14,16 @@ public class Usuario {
 
     private String nombre;
 
-    @NotEmpty(message = "El atributo no puede estar vacio")
+    @NotEmpty(message = "El atributo no puede estar vacío")
     private String apellido;
 
-    @NotEmpty(message = "El atributo no puede estar vacio")
-    @Size(min = 3, max = 8, message = "La longitud del username debe de ser de minimo 3 hasta un maximo de 8 caracteres")
+    @NotEmpty(message = "El atributo no puede estar vacío")
+    @Size(min = 3, max = 8, message = "La longitud del username debe de ser de mínimo 3 hasta un máximo de 8 caracteres")
     private String username;
 
-    @NotEmpty(message = "El atributo no puede estar vacio")
+    @NotEmpty(message = "El atributo no puede estar vacío")
     private String password;
-    @NotBlank(message = "El atributo no puede estar vacio")
+    @NotBlank(message = "El atributo no puede estar vacío")
     @Email(message = "Correo con formato incorrecto")
     private String email;
     
