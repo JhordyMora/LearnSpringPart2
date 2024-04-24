@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Primary
 public class MiServicioComplejo implements IService {
     public String operacion() {
-        return "ejecutando algun proceso importante complicado...";
+        return "ejecutando algún proceso importante complicado...";
     }
 }

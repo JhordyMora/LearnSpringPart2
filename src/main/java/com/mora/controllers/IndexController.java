@@ -7,13 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.mora.models.services.IService;
-// import com.mora.models.services.MiServicio;
 
 @Controller
 public class IndexController {
 
     @Autowired
-    @Qualifier("miServicioMedio") // Con esta anotacion aunque haya un bean que
+    @Qualifier("miServicioMedio") 
     private IService miServicio;
 
     @GetMapping({ "/", "", "/index" })

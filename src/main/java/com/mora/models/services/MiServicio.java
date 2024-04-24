@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 @Component("miServicioSimple")
 public class MiServicio implements IService {
     public String operacion() {
-        return "ejecutando algun proceso importante simple...";
+        return "ejecutando algún proceso importante simple...";
     }
 }

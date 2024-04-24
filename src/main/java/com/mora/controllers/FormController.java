@@ -25,7 +25,7 @@ public class FormController {
 
     @InitBinder
     public void initBinder(WebDataBinder binder){
-        binder.addValidators(usuarioValidador);// si utilizamos setValidator borrariamos (sobreescribiriamos) las funciones de @Valid por eso si las queremos dejar activas usamos addValidators, sino setValidator con el validados personalizado que hayamos hecho 
+        binder.addValidators(usuarioValidador);
     }
 
     @GetMapping("/form")
