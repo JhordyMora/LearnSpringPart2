@@ -1,107 +1,92 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title th:text="${titulo}"></title>
-    </head>
 
-    <body>
-        <h3 th:text="${titulo}"></h3>
-        <!-- lo que hace th:objecto es mapear la key del Model. En este
+<head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title th:text="${titulo}"></title>
+</head>
+
+<body>
+    <h3 th:text="${titulo}"></h3>
+    <!-- lo que hace th:objecto es mapear la key del Model. En este
         caso usario, el cual esta relacionado en su value con el Objeto Usuario.
         De esta manera dejo claro que este el objeto que se debe usar es esta
         form. Si hacemos esto, ya no necesitamos de name y th:value en los
         inputs, si no th:field="*{}". Donde el * en th:field es reemplazado
         internamente por spring con el objeto de th:object que esta conectado a
         la key que tenemos en th:field-->
-        <form method="post" th:object="${usuario}" th:action="@{/form}">
+    <form method="post" th:object="${usuario}" th:action="@{/form}">
+        <div>
+            <label for="identificador">Identificador</label>
             <div>
-                <label for="identificador">Identificador</label>
-                <div>
-                    <input
-                        id="identificador"
-                        th:field="*{identificador}"
-                        type="text"
-                    />
-                </div>
+                <input id="identificador" th:field="*{identificador}" type="text" />
             </div>
-            <div th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
+        </div>
+        <div th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
+        <div>
+            <label for="nombre">Nombre</label>
             <div>
-                <label for="nombre">Nombre</label>
-                <div>
-                    <input
-                        id="nombre"
-                        th:field="*{nombre}"
-                        type="text"
-                    />
-                </div>
+                <input id="nombre" th:field="*{nombre}" type="text" />
             </div>
-            <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+        </div>
+        <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+        <div>
+            <label for="apellido">Apellido</label>
             <div>
-                <label for="apellido">Apellido</label>
-                <div>
-                    <input
-                        id="apellido"
-                        th:field="*{apellido}"
-                        type="text"
-                    />
-                </div>
+                <input id="apellido" th:field="*{apellido}" type="text" />
             </div>
-            <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
+        </div>
+        <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
+        <div>
+            <label for="username">Username</label>
             <div>
-                <label for="username">Username</label>
-                <div>
-                    <input
-                        id="username"
-                        th:field="*{username}"
-                        type="text"
-                    />
-                </div>
+                <input id="username" th:field="*{username}" type="text" />
             </div>
-            <!--<div
+        </div>
+        <!--<div
                 th:if="${error != null && error.containsKey('username')}"
                 th:text="${error.get('username')}"
             ></div>-->
-            <!--se puede manejar los errores de la manera de abajo-->
-            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        <!--se puede manejar los errores de la manera de abajo-->
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        <div>
+            <label for="password">Password</label>
             <div>
-                <label for="password">Password</label>
-                <div>
-                    <input
-                        id="password"
-                        th:field="*{password}"
-                        type="password"
-                    />
-                </div>
+                <input id="password" th:field="*{password}" type="password" />
             </div>
-            <!--<div
+        </div>
+        <!--<div
                 th:if="${error != null && error.containsKey('password')}"
                 th:text="${error.get('password')}"
             ></div>-->
-            <!--se puede manejar los errores de la manera de abajo-->
-            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        <!--se puede manejar los errores de la manera de abajo-->
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        <div>
+            <label for="email">Correo</label>
             <div>
-                <label for="email">Correo</label>
-                <div>
-                    <input
-                        id="email"
-                        name="email"
-                        th:field="*{email}"
-                    />
-                </div>
+                <input id="email" name="email" th:field="*{email}" />
             </div>
-            <!--<div
+        </div>
+        <!--<div
                 th:if="${error != null && error.containsKey('email')}"
                 th:text="${error.get('email')}"
             ></div>-->
-            <!--se puede manejar los errores de la manera de abajo-->
-            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        <!--se puede manejar los errores de la manera de abajo-->
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        <div>
+            <label for="cuenta">Cuenta</label>
             <div>
-                <div>
-                    <input type="submit" value="Enviar" />
-                </div>
+                <input id="cuenta" name="cuenta" th:field="*{cuenta}" />
             </div>
-        </form>
-    </body>
+        </div>
+        <div th:if="${#fields.hasErrors('cuenta')}" th:errors="*{cuenta}"></div>
+        <div>
+            <div>
+                <input type="submit" value="Enviar" />
+            </div>
+        </div>
+    </form>
+</body>
+
 </html>

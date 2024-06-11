@@ -4,8 +4,11 @@ import com.mora.validation.IdentificadorRegex;
 import com.mora.validation.Requerido;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class Usuario {
@@ -28,7 +31,20 @@ public class Usuario {
     @NotBlank(message = "El atributo no puede estar vacío")
     @Email(message = "Correo con formato incorrecto")
     private String email;
+
+    @NotNull
+    @Min(5)
+    @Max(5000)
+    private Integer cuenta;
     
+    public Integer getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Integer cuenta) {
+        this.cuenta = cuenta;
+    }
+
     public String getNombre() {
         return nombre;
     }
