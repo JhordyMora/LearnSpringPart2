@@ -1,5 +1,9 @@
 package com.mora.models.domain;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.mora.validation.IdentificadorRegex;
 import com.mora.validation.Requerido;
 
@@ -9,6 +13,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 public class Usuario {
@@ -37,6 +42,19 @@ public class Usuario {
     @Max(5000)
     private Integer cuenta;
     
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past
+    private Date fechaNacimiento;
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
     public Integer getCuenta() {
         return cuenta;
     }
