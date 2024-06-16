@@ -30,9 +30,7 @@ public class FormController {
     @InitBinder
     public void initBinder(WebDataBinder binder){
         binder.addValidators(usuarioValidador);
-        //Podemos usar esta manera en vez de usar el validador de DateTimeFormat en la clase Usuario. Al final es lo mismo
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        //setLenient(false) establece que el análisis de la fecha debe ser estricto. Esto significa que el SimpleDateFormat no permitirá fechas que no sean exactas según el formato especificado.
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
