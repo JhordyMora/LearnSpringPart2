@@ -5,7 +5,11 @@ import com.mora.validation.UsuarioValidador;
 
 import jakarta.validation.Valid;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +30,11 @@ public class FormController {
     @InitBinder
     public void initBinder(WebDataBinder binder){
         binder.addValidators(usuarioValidador);
+        //Podemos usar esta manera en vez de usar el validador de DateTimeFormat en la clase Usuario. Al final es lo mismo
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        //setLenient(false) establece que el análisis de la fecha debe ser estricto. Esto significa que el SimpleDateFormat no permitirá fechas que no sean exactas según el formato especificado.
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 
     @GetMapping("/form")
