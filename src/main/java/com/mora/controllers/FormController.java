@@ -8,7 +8,6 @@ import jakarta.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +23,11 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes("usuario")// este nombre tiene que ser el nombre del objeto que la pasamos a la vista al cargarla
 public class FormController {
 
-    @Autowired
-    private UsuarioValidador usuarioValidador;
+    private final UsuarioValidador usuarioValidador;
+
+    FormController(UsuarioValidador usuarioValidador) {
+        this.usuarioValidador = usuarioValidador;
+    }
 
     @InitBinder
     public void initBinder(WebDataBinder binder){

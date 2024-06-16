@@ -2,8 +2,6 @@ package com.mora.models.domain;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.mora.validation.IdentificadorRegex;
 import com.mora.validation.Requerido;
 
