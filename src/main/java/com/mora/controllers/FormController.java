@@ -1,5 +1,6 @@
 package com.mora.controllers;
 
+import com.mora.editors.NombreMayusculaEditor;
 import com.mora.models.domain.Usuario;
 import com.mora.validation.UsuarioValidador;
 
@@ -35,6 +36,10 @@ public class FormController {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+        // Con este editor todos string que hayan se pondran en mayuscula. Si se quisiera solamente un
+        // atributo de la clase usuario por ejemplo con nombre se pondria el nombre del atributo de la calse así:
+        // binder.registerCustomEditor(String.class, "nombre", new NombreMayusculaEditor());
+        binder.registerCustomEditor(String.class, new NombreMayusculaEditor());
     }
 
     @GetMapping("/form")
