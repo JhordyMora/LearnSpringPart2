@@ -10,7 +10,7 @@
 <body>
     <h3 th:text="${titulo}"></h3>
     <!-- lo que hace th:objecto es mapear la key del Model. En este
-        caso usario, el cual esta relacionado en su value con el Objeto Usuario.
+        caso usuario, el cual esta relacionado en su value con el Objeto Usuario.
         De esta manera dejo claro que este el objeto que se debe usar es esta
         form. Si hacemos esto, ya no necesitamos de name y th:value en los
         inputs, si no th:field="*{}". Donde el * en th:field es reemplazado
@@ -32,6 +32,16 @@
         </div>
         <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
         <div>
+            <label for="pais">País</label>
+            <div>
+                <select id="pais" th:field="*{pais}">
+                    <!-- th:text renderiza el valor del país en el html y th:value es el que manda al backend-->
+                    <option th:each ="pais: ${países}" th:text= "${pais}" th:value = "${pais}"/>
+                </select>
+            </div>
+        </div>
+        <div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+        <div>
             <label for="apellido">Apellido</label>
             <div>
                 <input id="apellido" th:field="*{apellido}" type="text" />
@@ -44,7 +54,7 @@
                 <input id="username" th:field="*{username}" type="text" />
             </div>
         </div>
-        <!--<div
+        <!--<
                 th:if="${error != null && error.containsKey('username')}"
                 th:text="${error.get('username')}"
             ></div>-->
