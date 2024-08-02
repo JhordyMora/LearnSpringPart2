@@ -18,7 +18,6 @@
         <li th:text="${usuario.identificador}"></li>
         <li th:text="${usuario.pais}"></li>
         <li th:text="${usuario.cuenta}"></li>
-        //se usa # para llamar a los helpers ede thymeleaf. Hay muchos tipos de Helpers, asÍ que mirar en la pagina oficial 
         <li th:text="${#date.format(usuario.fechaNacimiento, dd/MM/yyyy')}"></li>
     </ul>
 </body>
