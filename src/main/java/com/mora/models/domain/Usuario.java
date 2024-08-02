@@ -48,6 +48,17 @@ public class Usuario {
     @NotEmpty
     private String pais;
 
+    @NotEmpty
+    private String paisMap;
+    
+    public String getPaisMap() {
+        return paisMap;
+    }
+
+    public void setPaisMap(String paisMap) {
+        this.paisMap = paisMap;
+    }
+
     public String getPais() {
         return pais;
     }

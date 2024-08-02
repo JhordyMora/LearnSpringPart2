@@ -41,6 +41,16 @@
         </div>
         <div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
         <div>
+            <label for="paisMap">PaísMap</label>
+            <div>
+                <select id="paisMap" th:field="*{paisMap}">
+                    <!-- Aquí en th:value se pone en valor que se va a mandar al model que se transfiere luego a la clase usuario.paisMap -->
+                    <option th:each ="paisMap: ${paisesMap.entrySet()}" th:text= "${paisMap.value}" th:value = "${paisMap.key}"/>
+                </select>
+            </div>
+        </div>
+        <div th:if="${#fields.hasErrors('paisMap')}" th:errors="*{paisMap}"></div>
+        <div>
             <label for="apellido">Apellido</label>
             <div>
                 <input id="apellido" th:field="*{apellido}" type="text" />

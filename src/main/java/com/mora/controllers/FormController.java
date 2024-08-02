@@ -9,7 +9,9 @@ import jakarta.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -24,7 +26,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
-@SessionAttributes("usuario")// este nombre tiene que ser el nombre del objeto que la pasamos a la vista al cargarla
+@SessionAttributes("usuario") // este nombre tiene que ser el nombre del objeto que la pasamos a la vista al
+                              // cargarla
 public class FormController {
 
     private final UsuarioValidador usuarioValidador;
@@ -34,7 +37,7 @@ public class FormController {
     }
 
     @InitBinder
-    public void initBinder(WebDataBinder binder){
+    public void initBinder(WebDataBinder binder) {
         binder.addValidators(usuarioValidador);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
@@ -65,7 +68,18 @@ public class FormController {
     }
 
     @ModelAttribute("paises")
-    public List<String> paises(){
-        return Arrays.asList("Colombia","Chile", "Alemania","Japón", "Andorra");
+    public List<String> paises() {
+        return Arrays.asList("Colombia", "Chile", "Alemania", "Japón", "Andorra");
+    }
+
+    @ModelAttribute("paisesMap")
+    public Map<String, String> paisesMap() {
+        Map<String, String> paises = new HashMap<>();
+        paises.put("ES", "España");
+        paises.put("CO", "Colombia");
+        paises.put("DE", "Alemania");
+        paises.put("PE", "Peru");
+
+        return paises;
     }
 }
