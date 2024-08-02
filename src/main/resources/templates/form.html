@@ -35,7 +35,7 @@
             <label for="pais">País</label>
             <div>
                 <select id="pais" th:field="*{pais}">
-                    <option th:each ="pais: ${países}" th:text= "${pais}" th:value = "${pais}"/>
+                    <option th:each ="pais: ${paises}" th:text= "${pais}" th:value = "${pais}"/>
                 </select>
             </div>
         </div>
