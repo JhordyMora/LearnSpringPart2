@@ -5,7 +5,6 @@ import java.util.Date;
 import com.mora.validation.IdentificadorRegex;
 import com.mora.validation.Requerido;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -46,7 +45,7 @@ public class Usuario {
     @Past
     private Date fechaNacimiento;
 
-    @Valid
+    @NotNull
     private Pais paisClase;
 
     @NotEmpty

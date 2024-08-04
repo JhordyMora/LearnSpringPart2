@@ -1,8 +1,10 @@
 package com.mora.controllers;
 
 import com.mora.editors.NombreMayusculaEditor;
+import com.mora.editors.PaisPropertyEditor;
 import com.mora.models.domain.Pais;
 import com.mora.models.domain.Usuario;
+import com.mora.services.PaisService;
 import com.mora.validation.UsuarioValidador;
 
 import jakarta.validation.Valid;
@@ -14,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,14 +30,19 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
-@SessionAttributes("usuario") // este nombre tiene que ser el nombre del objeto que la pasamos a la vista al
-                              // cargarla
+@SessionAttributes("usuario") 
 public class FormController {
 
     private final UsuarioValidador usuarioValidador;
 
-    FormController(UsuarioValidador usuarioValidador) {
+    private PaisService paisService;
+
+    private final PaisPropertyEditor paisPropertyEditor;
+
+    FormController(UsuarioValidador usuarioValidador, PaisService paisService, PaisPropertyEditor paisPropertyEditor) {
         this.usuarioValidador = usuarioValidador;
+        this.paisService = paisService;
+        this.paisPropertyEditor = paisPropertyEditor;
     }
 
     @InitBinder
@@ -44,6 +52,7 @@ public class FormController {
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
         binder.registerCustomEditor(String.class, new NombreMayusculaEditor());
+        binder.registerCustomEditor(Pais.class, "paisClase", paisPropertyEditor);
     }
 
     @GetMapping("/form")
@@ -86,10 +95,6 @@ public class FormController {
 
     @ModelAttribute("listaPaisesClase")
     public List<Pais> listaPaisesClase() {
-        return List.of(
-                new Pais(1, "ES", "España"),
-                new Pais(2, "CO", "Colombia"),
-                new Pais(3, "DE", "Alemania"),
-                new Pais(4, "PE", "Peru"));
+        return paisService.listaPaisesClase();
     }
 }

@@ -1,10 +1,6 @@
 package com.mora.models.domain;
 
-import io.micrometer.common.lang.NonNull;
-import jakarta.validation.constraints.NotNull;
-
 public class Pais {
-    @NotNull
     private Integer id;
     private String codigo;
     private String nombre;
