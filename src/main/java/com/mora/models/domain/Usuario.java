@@ -5,6 +5,7 @@ import java.util.Date;
 import com.mora.validation.IdentificadorRegex;
 import com.mora.validation.Requerido;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -44,6 +45,9 @@ public class Usuario {
     // @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past
     private Date fechaNacimiento;
+
+    @Valid
+    private Pais paisClase;
 
     @NotEmpty
     private String pais;
@@ -129,6 +133,14 @@ public class Usuario {
 
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
+    }
+
+    public Pais getPaisClase() {
+        return paisClase;
+    }
+
+    public void setPaisClase(Pais paisClase) {
+        this.paisClase = paisClase;
     }
 
 }

@@ -41,6 +41,15 @@
         </div>
         <div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
         <div>
+            <label for="paisClase">País desde una clase</label>
+            <div>
+                <select id="paisClase" th:field="*{paisClase.id}">
+                    <option th:each ="paisClase: ${listaPaisesClase}" th:text= "${paisClase.nombre}" th:value = "${paisClase.id}"/>
+                </select>
+            </div>
+        </div>
+        <div th:if="${#fields.hasErrors('paisClase.id')}" th:errors="*{paisClase.id}"></div>
+        <div>
             <label for="paisMap">PaísMap</label>
             <div>
                 <select id="paisMap" th:field="*{paisMap}">

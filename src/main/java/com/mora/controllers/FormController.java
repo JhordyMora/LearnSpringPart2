@@ -1,6 +1,7 @@
 package com.mora.controllers;
 
 import com.mora.editors.NombreMayusculaEditor;
+import com.mora.models.domain.Pais;
 import com.mora.models.domain.Usuario;
 import com.mora.validation.UsuarioValidador;
 
@@ -81,5 +82,14 @@ public class FormController {
         paises.put("PE", "Peru");
 
         return paises;
+    }
+
+    @ModelAttribute("listaPaisesClase")
+    public List<Pais> listaPaisesClase() {
+        return List.of(
+                new Pais(1, "ES", "España"),
+                new Pais(2, "CO", "Colombia"),
+                new Pais(3, "DE", "Alemania"),
+                new Pais(4, "PE", "Peru"));
     }
 }
