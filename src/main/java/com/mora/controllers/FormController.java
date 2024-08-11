@@ -96,4 +96,9 @@ public class FormController {
     public List<Pais> listaPaisesClase() {
         return paisService.listaPaisesClase();
     }
+
+    @ModelAttribute("listaDeRolesString")
+    public List<String> listaRolesString(){
+        return List.of("ROLE_ADMIN", "ROLE_USER", "ROLE_MODERATOR");
+    }
 }

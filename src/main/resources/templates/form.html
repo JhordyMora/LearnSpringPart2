@@ -32,10 +32,18 @@
         </div>
         <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
         <div>
+            <label for="roles">Roles: </label>
+            <div th:each="rol: ${listaDeRolesString}">
+                <input id="roles" th:field="*{roles}" th:value="${rol}" type="checkbox" />
+                <label th:text="${rol}"></label>
+            </div>
+        </div>
+        <div th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></div>
+        <div>
             <label for="pais">País</label>
             <div>
                 <select id="pais" th:field="*{pais}">
-                    <option th:each ="pais: ${paises}" th:text= "${pais}" th:value = "${pais}"/>
+                    <option th:each="pais: ${paises}" th:text="${pais}" th:value="${pais}" />
                 </select>
             </div>
         </div>
@@ -44,7 +52,8 @@
             <label for="paisClase">País desde una clase</label>
             <div>
                 <select id="paisClase" th:field="*{paisClase}">
-                    <option th:each ="paisClase: ${listaPaisesClase}" th:text= "${paisClase.nombre}" th:value = "${paisClase.id}"/>
+                    <option th:each="paisClase: ${listaPaisesClase}" th:text="${paisClase.nombre}"
+                        th:value="${paisClase.id}" />
                 </select>
             </div>
         </div>
@@ -54,7 +63,8 @@
             <div>
                 <select id="paisMap" th:field="*{paisMap}">
                     <!-- Aquí en th:value se pone en valor que se va a mandar al model que se transfiere luego a la clase usuario.paisMap -->
-                    <option th:each ="paisMap: ${paisesMap.entrySet()}" th:text= "${paisMap.value}" th:value = "${paisMap.key}"/>
+                    <option th:each="paisMap: ${paisesMap.entrySet()}" th:text="${paisMap.value}"
+                        th:value="${paisMap.key}" />
                 </select>
             </div>
         </div>
@@ -112,7 +122,8 @@
         <div>
             <label for="fechaNacimiento">Fecha de Nacimiento</label>
             <div>
-                <input type="date" id="fechaNacimiento" name="fechaNacimiento" th:field="*{fechaNacimiento}" placeholder="yyyy-MM-dd"/>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" th:field="*{fechaNacimiento}"
+                    placeholder="yyyy-MM-dd" />
             </div>
         </div>
         <div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>

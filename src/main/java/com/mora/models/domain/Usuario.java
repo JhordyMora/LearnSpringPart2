@@ -1,6 +1,7 @@
 package com.mora.models.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import com.mora.validation.IdentificadorRegex;
 import com.mora.validation.Requerido;
@@ -53,6 +54,9 @@ public class Usuario {
 
     @NotEmpty
     private String paisMap;
+    
+    @NotEmpty
+    private List<String> roles;
     
     public String getPaisMap() {
         return paisMap;
@@ -140,6 +144,14 @@ public class Usuario {
 
     public void setPaisClase(Pais paisClase) {
         this.paisClase = paisClase;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
 }
